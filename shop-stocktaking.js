@@ -43,20 +43,17 @@ function showProductsSortedByItem(items) {
 
 function showProductsSortedByCost(items) {
     items.sort((a, b) =>getRecordTotalCoast(a) - getRecordTotalCoast(b));
-
     showMessage('Sorted products be coast of record: ');
     showMessage(items);
 }
 
 function showTypeOfOrangesWithLeastPrice(items) {
     const oranges = items.filter(element => element.item === 'orange')
-
     const maxPrice = Math.max.apply(Math, oranges.map(function (element) {
         return element.pricePerKilo
             .substr(1)
             .replace(',', '.');
     }));
-
     const orangesWithMaxPrice = oranges
         .filter(element => +element.pricePerKilo
             .substr(1)
@@ -64,7 +61,6 @@ function showTypeOfOrangesWithLeastPrice(items) {
         );
 
     showMessage("Oranges with the least price:");
-
     orangesWithMaxPrice.forEach(element => showMessage(element.type));
 }
 
@@ -84,7 +80,6 @@ function showCoastByItem(items) {
 
     items.forEach(element => {
         const key = element.item.charAt(0).toUpperCase() + element.item.substr(1);
-
         const cost = getRecordTotalCoast(element);
 
         if (productsByItems.has(key)) {
